@@ -62,8 +62,10 @@
         }
         else {
             $name = $_POST['email'];
-            if(filter_var($email,FILTER_VALIDATE_EMAIL))
-           //if(filter_var($name, FILTER_VALI)) 
+            if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+                echo 'Email must be valid address';
+            }
+         
         }
        
        
@@ -88,7 +90,7 @@
 
         //save to DB
         if(mysqli_query($conn, $sql)){
-            header('Location: index.php');
+            //header('Location: index.php');
         }
         else{
             echo 'error:' . mysqli_error($conn);
