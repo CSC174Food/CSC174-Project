@@ -7,11 +7,13 @@
     include('config/db_con.php');
 
     if(isset($_POST['submit'])){
+
         if(empty($_POST['name'])){
             $errors['name'] ='Name is required <br />';
         }
         else {
             $name = $_POST['name'];
+
            //if(filter_var($name, FILTER_VALI)) 
         }
 
@@ -60,6 +62,7 @@
         }
         else {
             $name = $_POST['email'];
+            if(filter_var($email,FILTER_VALIDATE_EMAIL))
            //if(filter_var($name, FILTER_VALI)) 
         }
        
