@@ -35,7 +35,7 @@
 
             <div class="col s6 md3">
                 <div class="card z-depth-0">
-                 <div class="card-content cneter">
+                 <div class="card-content center">
                  <div class="product-image"><img src="<?php echo $pid['photo']; ?>"></div>
                  
                     <h6 ><?php echo $pid['photo']; ?></h6>
