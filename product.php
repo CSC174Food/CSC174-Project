@@ -37,6 +37,7 @@
                 <div class="card z-depth-0">
                  <div class="card-content cneter">
                  <div class="product-image"><img src="<?php echo $pid['photo']; ?>"></div>
+                 
                     <h6 ><?php echo $pid['photo']; ?></h6>
                     <div><?php echo htmlspecialchars($pid['product_name']); ?></div>
                   </div>
