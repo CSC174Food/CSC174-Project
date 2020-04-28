@@ -24,7 +24,7 @@
 <!DOCTYPE html>
 <html >
 
-    <?php include('templates\header.php'); ?>
+    <?php include('templates/header.php'); ?>
 
    <h4 class="center grey-text">Customer</h4>
    
@@ -35,8 +35,8 @@
 
             <div class="col s6 md3">
                 <div class="card z-depth-0">
-                 <div class="card-content cneter">
-                    <h6 ><?php echo $pid['photo']; ?></h6>
+                 <div class="card-content center">
+                 <?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $result['image'] ).'"/>'; ?>
                     <div><?php echo htmlspecialchars($pid['product_name']); ?></div>
                   </div>
                   <div class="card-action right-align"></div>
@@ -50,6 +50,6 @@
    </div>
 
 
-    <?php include('templates\footer.php'); ?>
+    <?php include('templates/footer.php'); ?>
 </html>
 
