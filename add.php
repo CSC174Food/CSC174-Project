@@ -110,7 +110,7 @@
         VALUES('$name', '$phone','$street','$city','$state','$zip','$email')";
 
         if(mysqli_query($conn, $sql)){
-            header('Location: index.php');
+            header('Location: product.php');
         }
         else{
             echo'query error: '. mysqli_error($conn);
