@@ -124,7 +124,7 @@
 <!DOCTYPE html>
 <html >
 
-    <?php include('templates\header.php'); ?>
+    <?php include('templates/header.php'); ?>
 
 <!-----------    Contains information about the customer   -------------------->
     <section class="container grey-text">
@@ -166,6 +166,6 @@
     </section>
  <!-----------    END information about the customer   -------------------->
 
-    <?php include('templates\footer.php'); ?>
+    <?php include('templates/footer.php'); ?>
 </html>
 
