@@ -24,7 +24,7 @@
 <!DOCTYPE html>
 <html >
 
-    <?php include('templates/header.php'); ?>
+    <?php include'templates/header.php'; ?>
 
    <h4 class="center grey-text">Customer</h4>
    
