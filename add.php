@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $name = $email = $street = $state =$phone =$zip =$city = '';
     $errors =array('name'=>'', 'phone'=>'', 'street'=>'', 'city'=>'','state'=>'','zip'=>'','email'=>'');
 
@@ -110,9 +111,14 @@
         VALUES('$name', '$phone','$street','$city','$state','$zip','$email')";
 
         if(mysqli_query($conn, $sql)){
-            header('Location: index.php');
+
+                $last_id = $conn->insert_id;
+                echo "New record created successfully. Last inserted ID is: " . $last_id;
+                $_SESSION['pid'] = $last_id;
+                header('Location: product.php');
         }
         else{
+            echo "Error: " . $sql . "<br>" . $conn->error;
             echo'query error: '. mysqli_error($conn);
         }
        }
@@ -124,7 +130,7 @@
 <!DOCTYPE html>
 <html >
 
-    <?php include('templates\header.php'); ?>
+    <?php include('templates/header.php'); ?>
 
 <!-----------    Contains information about the customer   -------------------->
     <section class="container grey-text">
@@ -166,6 +172,6 @@
     </section>
  <!-----------    END information about the customer   -------------------->
 
-    <?php include('templates\footer.php'); ?>
+    <?php include('templates/footer.php'); ?>
 </html>
 
