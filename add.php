@@ -112,17 +112,13 @@
 
         if(mysqli_query($conn, $sql)){
 
-            if ($conn->query($sql) === TRUE) {
-                $last_id = $conn->insert_id;
-                echo "New record created successfully. Last inserted ID is: " . $last_id;
-                $_SESSION['pid'] = $last_id;
-            } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
-                }
-
+            $last_id = mysqli_insert_id($conn);
+            echo "New record created successfully. Last inserted ID is: " . $last_id;
+            $_SESSION['pid'] = $last_id;
             header('Location: product.php');
         }
         else{
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
             echo'query error: '. mysqli_error($conn);
         }
        }
