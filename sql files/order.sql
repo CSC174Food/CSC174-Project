@@ -1,4 +1,4 @@
-create table ORDER
+create table P_ORDER
 (
 	order_id INT NOT NULL AUTO_INCREMENT,
 	payment_name varchar(100),
