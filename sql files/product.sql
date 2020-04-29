@@ -6,6 +6,6 @@ create table PRODUCT
 	price decimal(10,2),
     product_type char,
     size char,
-    photo mediumblob,
+    photo text,
 	primary key(pid)
 );
