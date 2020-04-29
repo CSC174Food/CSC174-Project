@@ -1,6 +1,7 @@
 <?php
+    session_start();
   include('config/db_con.php');
-
+    echo $_SESSION['pid'];
    // query for all customer
    $sql = 'SELECT * FROM product';
 

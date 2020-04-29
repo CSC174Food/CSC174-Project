@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $name = $email = $street = $state =$phone =$zip =$city = '';
     $errors =array('name'=>'', 'phone'=>'', 'street'=>'', 'city'=>'','state'=>'','zip'=>'','email'=>'');
 
@@ -110,6 +111,15 @@
         VALUES('$name', '$phone','$street','$city','$state','$zip','$email')";
 
         if(mysqli_query($conn, $sql)){
+
+            if ($conn->query($sql) === TRUE) {
+                $last_id = $conn->insert_id;
+                echo "New record created successfully. Last inserted ID is: " . $last_id;
+                $_SESSION['pid'] = $last_id;
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+                }
+
             header('Location: product.php');
         }
         else{
