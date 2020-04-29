@@ -18,7 +18,6 @@
    //close connection
    mysqli_close($conn);
 
-   //print_r($customer);
 
 ?>
 
