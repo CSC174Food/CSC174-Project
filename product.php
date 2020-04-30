@@ -14,6 +14,14 @@
    //fetch the result rows as array
    $product = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
+   $item= "SELECT *
+   FROM cart  INNER JOIN product 
+   WHERE cart.product_id = product.pid and  cart.cid='$c_id'";
+    $cart = mysqli_query($conn,$item);
+    $shopping_cart = mysqli_fetch_array($cart, MYSQLI_ASSOC);
+ 
+
+
 //---------------------------add an item ----------------------------------------------\\
    if(isset($_POST['add-cart'])){
         
@@ -28,12 +36,7 @@
                 VALUES('$pid', '$quantity','$c_id')";
 
         if(mysqli_query($conn, $sql)){
-            $item= "SELECT p.product_name, p.price, c.item_quantity, p.photo
-                    FROM cart as c JOIN product as p 
-                    WHERE c.product_id = p.pid and  cid='$c_id'";
-            $cart = mysqli_query($conn,$item);
-            $shopping_cart = mysqli_fetch_array($cart, MYSQLI_ASSOC);
-            $_SESSION['cart']=true;
+            
             header('Location: product.php');
         }
         else{
@@ -78,7 +81,8 @@
 
     <!-- cart table -->
     <?php
-    if(isset($_SESSION["cart"])){
+    if(mysqli_num_rows($cart)>0){
+     
     $total_quantity = 0;
     $total_price = 0;
     ?>
@@ -92,12 +96,13 @@
         <th style="text-align:center;" width="5%">Remove</th>
     </tr>
   
-    <?php foreach($shopping_cart as $shop): 
-        $item_price = $item['quantity']*$item['price'];
+    <?php foreach($cart as $shop): 
+        $item_price = $shop['item_quantity']*$shop['price'];
     ?>
         <tr>
-        <td><img src="<?php echo $shop["photo"]; ?>" class="cart-item-image" /><?php echo $item["name"]; ?></td>
-            <td style="text-align:right;"><?php echo $shop["quantity"]; ?></td>
+        <td><img src="<?php echo $shop["photo"]; ?>" class="cart-item-image" />
+        <?php echo $shop["product_name"]; ?></td>
+            <td style="text-align:right;"><?php echo $shop["item_quantity"]; ?></td>
             <td  style="text-align:right;"><?php echo "$ ".$shop["price"]; ?></td>
             <td  style="text-align:right;"><?php echo "$ ". number_format($item_price,2); ?></td>
             <td style="text-align:center;"><a href="index.php?action=remove&code=<?php echo $item["cart_id"]; ?>" class="btnRemoveAction"><img src="icon-delete.png" alt="Remove Item" /></a></td>
