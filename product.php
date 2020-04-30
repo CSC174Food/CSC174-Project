@@ -15,23 +15,11 @@
 
     
 
-   if(isset($_POST['submit'])){
+   if(isset($_POST['add-cart'])){
         
-        $prod_id = mysql_real_escape_string($conn, $_POST['pid']);
-        $quant = mysql_real_escape_string($conn, $_POST['quantity']);
-
-        $cart_sql ="INSERT INTO cart(product_id, item_quantity, cid)
-        VALUES( '$pid','$quant','$c_id')";
-
-        $result=mysqli_query($conn, $cart_sql);
-
-        if(mysqli_query($conn, $cart_sql))
-        {
+       echo 'reeee';
             header('Location: product.php');
-        }
-        else{
-            echo 'query error:' . mysqli_error($conn);
-        }
+        
     
    }
 
@@ -75,7 +63,7 @@
                     <div><h5><?php echo ($pid['product_name']); ?></h5></div>
                     <div class="cart-action" style ="width:10%">
                     <input type="text" class="product-quantity" name="quantity" value="1" />
-                    <input type="submit"  value="add" name="add" class="btn" /></div>
+                    <input type="submit"  value="add" name="add-cart" class="btn" /></div>
                   </div>
                   <div class="card-action right-align"></div>
                   <a href="#" class="brand-text">more info</a>
