@@ -40,7 +40,6 @@
                     <div><?php echo htmlspecialchars($cid['email']); ?></div>
                   </div>
                   <div class="card-action right-align"></div>
-                  <a href="#" class="brand-text">more info</a>
                 </div>
             </div>
 

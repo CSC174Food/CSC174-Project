@@ -109,12 +109,14 @@
             
         </tr>
    <?php endforeach;?>
-
+        <div class="center">
+            <!-- name="submit" is sent to $_GET to check if the button has been press-->
+            <input type="submit" name="submit" value="submit" class="btn">
+        </div>
     <?php
     }
     ?>
+        
    <!-- END of cart table -->
-
-    <?php include('templates/footer.php'); ?>
 </html>
 
