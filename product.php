@@ -42,6 +42,22 @@
             echo'query error: '. mysqli_error($conn);
         }       
     }
+
+    if(isset($_POST['remove'])){
+
+        $delete_id = mysqli_real_escape_string($conn, $_POST['delete_id']);
+
+        $remove= "DELETE FROM cart WHERE cart_id= '$delete_id'";
+
+        if(mysqli_query($conn, $remove)){
+            header('Location: product.php');
+        }
+        else{
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            echo'query error: '. mysqli_error($conn);
+        }  
+    
+    }
 //----------------------END OF ADD ITEM----------------------------------------------//
 ?>
 
@@ -101,8 +117,15 @@
         <?php echo $shop["product_name"]; ?></td>
             <td style="text-align:right;"><?php echo $shop["item_quantity"]; ?></td>
             <td  style="text-align:right;"><?php echo "$ ".$shop["price"]; ?></td>
-            <td  style="text-align:right;"><?php echo "$ ". number_format($item_price,2); ?></td>
-            <td style="text-align:center;"><a href="index.php?action=remove&code=<?php echo $item["cart_id"]; ?>" class="btnRemoveAction"><img src="icon-delete.png" alt="Remove Item" /></a></td>
+            <td  style="text-align:right;"><?php echo "$ ". $shop["value"]; ?></td>
+            <td style="text-align:center;">
+            <form action="product.php" method="POST">
+                <input type="hidden" name="delete_id" value= "<?php echo $shop["cart_id"]; ?>">
+                <input type="submit" name="remove" value="remove" class="btn danger z-depth-0">
+            </form>
+           
+        
+            </td>
             
         </tr>
    <?php endforeach;?>
