@@ -27,7 +27,7 @@
             $phone = $_POST['phone'];
             if(!preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $phone))
             {
-                $errors['phone']= 'phone number must be valid address';
+                $errors['phone']= 'phone number must be valid in a xxx-xxx-xxxx format';
             }
         }
         
