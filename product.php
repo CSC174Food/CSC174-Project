@@ -14,9 +14,7 @@
    //fetch the result rows as array
    $product = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-   $item= "SELECT *
-   FROM cart  INNER JOIN product 
-   WHERE cart.product_id = product.pid and  cart.cid='$c_id'";
+   $item= "SELECT * FROM s_cart where cid='$c_id'";
     $cart = mysqli_query($conn,$item);
     $shopping_cart = mysqli_fetch_array($cart, MYSQLI_ASSOC);
  
@@ -45,7 +43,6 @@
         }       
     }
 //----------------------END OF ADD ITEM----------------------------------------------//
-
 ?>
 
 <!DOCTYPE html>
@@ -100,7 +97,7 @@
         $item_price = $shop['item_quantity']*$shop['price'];
     ?>
         <tr>
-        <td><img src="<?php echo $shop["photo"]; ?>" class="cart-item-image" />
+        <td>
         <?php echo $shop["product_name"]; ?></td>
             <td style="text-align:right;"><?php echo $shop["item_quantity"]; ?></td>
             <td  style="text-align:right;"><?php echo "$ ".$shop["price"]; ?></td>
@@ -111,7 +108,10 @@
    <?php endforeach;?>
         <div class="center">
             <!-- name="submit" is sent to $_GET to check if the button has been press-->
-            <input type="submit" name="submit" value="submit" class="btn">
+            <ul id="nav-mobile" >
+                    <!-- this is the go to cart button --> 
+                    <li><a href="order.php" class="btn ">Order</a></li>
+                </ul>
         </div>
     <?php
     }
