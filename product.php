@@ -34,25 +34,10 @@
     <?php include'templates/header.php'; ?>
 
    <h4 class="center grey-text">Product</h4>
-<!-- cart table -->
-   <table class="tbl-cart" cellpadding="10" cellspacing="1">
-    <tbody>
-        <tr>
-        <th style="text-align:left;">Name</th>
-        <th style="text-align:right;" width="5%">Quantity</th>
-        <th style="text-align:right;" width="10%">Unit Price</th>
-        <th style="text-align:right;" width="10%">Price</th>
-        <th style="text-align:center;" width="5%">Remove</th>
-    </tr>
 
-    <?php 
-    
-    
-    ?>
-   <!-- END of cart table -->
    <!-- Product table -->
    <div class="container">
-    <div class="row">
+        <div class="row">
 
         <?php foreach($product as $pid): ?>
 
@@ -73,9 +58,26 @@
             </div>
         <?php endforeach;  ?>
 
+        </div>
     </div>
-   </div>
     <!--END of Product table -->
+
+    <!-- cart table -->
+   <table class="tbl-cart" cellpadding="10" cellspacing="1">
+    <tbody>
+        <tr>
+        <th style="text-align:left;">Name</th>
+        <th style="text-align:right;" width="5%">Quantity</th>
+        <th style="text-align:right;" width="10%">Unit Price</th>
+        <th style="text-align:right;" width="10%">Price</th>
+        <th style="text-align:center;" width="5%">Remove</th>
+    </tr>
+
+    <?php 
+    
+    
+    ?>
+   <!-- END of cart table -->
 
     <?php include('templates/footer.php'); ?>
 </html>
