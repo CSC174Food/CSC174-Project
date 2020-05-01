@@ -5,8 +5,7 @@
     $c_id =$_SESSION['pid'];
     echo $c_id;
    // query for all customer
-   $sql = "SELECT * FROM receipt
-            WHERE custid='$c_id'" ;
+   $sql = "CALL view_receipt('$c_id')" ;
 
    // make query & get result
 

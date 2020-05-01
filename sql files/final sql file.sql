@@ -59,3 +59,17 @@ SELECT cart.cart_id, product.product_name, cart.item_quantity, product.price, ca
 from cart inner join product  
 where cart.product_id = product.pid
 );
+
+create view receipt as
+( SELECT customer.custid, customer.name, p_order.order_type, p_order.pickup_time, p_order.estimate_arrival, p_order.total_price
+	FROM p_order inner join	customer
+    where p_order.customer_id = customer.custid
+);
+
+DELIMITER //
+CREATE PROCEDURE view_receipt (IN c_id int)
+BEGIN
+	SELECT * FROM receipt
+            WHERE custid=c_id;
+END //
+DELIMITER ;
