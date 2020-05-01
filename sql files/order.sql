@@ -1,3 +1,5 @@
+use heroku_fea7079ade0abaf;
+drop table P_ORDER;
 create table P_ORDER
 (
 	order_id INT NOT NULL AUTO_INCREMENT,
@@ -5,7 +7,7 @@ create table P_ORDER
     expire_date int(4),
     card_number int(16),
     purchase_date timestamp,
-    order_type boolean,
+    order_type char not null,
 	estimate_arrival datetime,
     pickup_time datetime,
     customer_id int,

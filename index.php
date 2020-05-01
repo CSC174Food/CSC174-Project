@@ -36,8 +36,8 @@
             <div class="col s6 md3">
                 <div class="card z-depth-0">
                  <div class="card-content cneter">
-                    <h6 ><?php echo htmlspecialchars($cid['name']); ?></h6>
-                    <div><?php echo htmlspecialchars($cid['email']); ?></div>
+                    <h6 ><?php echo($cid['name']); ?></h6>
+                    <div><?php echo ($cid['email']); ?></div>
                   </div>
                   <div class="card-action right-align"></div>
                 </div>

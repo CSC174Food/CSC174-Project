@@ -4,7 +4,7 @@
     date_default_timezone_set('America/Los_Angeles');
     
 
-      //echo $_SESSION['pid'];
+      echo $_SESSION['pid'];
       $c_id =$_SESSION['pid'];
       $total= $_SESSION['total'];
 
@@ -35,7 +35,7 @@
             $number = $_POST['number'];
             if(!preg_match("/^[0-9]{16}$/", $number))
             {
-                $errors['number']= 'card number must be valid';
+                $errors['number']= 'card number must be valid 16 digit number';
             }
         }
         
@@ -66,9 +66,15 @@
         $new_time = date("Y-m-d H:i:s", strtotime("30 minutes"));
         
         //create sql
-
-        $insert ="INSERT INTO p_order (payment_name, card_number, expire_date, purchase_date, customer_id, total_price, order_type, pickup_time)
-        VALUES('$name', '$number','$expire','$time','$c_id','$total', '$radio', '$new_time')";
+        if($radio === 'p'){
+            $insert ="INSERT INTO p_order (payment_name, card_number, expire_date, purchase_date, customer_id, total_price, order_type, pickup_time)
+            VALUES('$name', '$number','$expire','$time','$c_id','$total', '$radio', '$new_time')";
+        } 
+        elseif($radio==='d'){
+            $insert ="INSERT INTO p_order (payment_name, card_number, expire_date, purchase_date, customer_id, total_price, order_type, estimate_arrival)
+            VALUES('$name', '$number','$expire','$time','$c_id','$total', '$radio', '$new_time')";
+        }
+       
 
         if(mysqli_query($conn, $insert)){
 
@@ -112,14 +118,14 @@
         <label for="">Please choose order type</label> 
         <p>
             <label>
-                <input name="group1" type="radio" value ="d"  />
+                <input name="order_type" type="radio" value ="d"  />
                 <span>deliever</span>
             </label>
         </p>
 
         <p>
             <label>
-                <input name="group1" type="radio" value="p" />
+                <input name="order_type" type="radio" value="p" checked />
                 <span>pick up</span>
             </label>
         </p>

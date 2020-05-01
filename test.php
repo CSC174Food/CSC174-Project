@@ -1,6 +1,6 @@
 <?php
 
-
+include('config/db_con.php');
 include('config/db_con.php');
 date_default_timezone_set('America/Los_Angeles');
 
@@ -10,7 +10,7 @@ $time = date("Y-m-d H:i:s", strtotime("now"));
 
 
 if(isset($_GET['submit'])){
-    $radio = $_GET['order_type'];
+    $radio = mysqli_real_escape_string($conn, $_GET['order_type']);
     if($radio==='d'){
         echo 'deliever';
     }
@@ -21,7 +21,7 @@ if(isset($_GET['submit'])){
 
         echo 'wrong ==';
     }
-    echo $radio;
+
 }
 
 ?>

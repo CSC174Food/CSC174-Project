@@ -19,6 +19,10 @@
             margin: 20px auto;
             padding: 20px;
         }
+
+        .headertekst{
+        text-align: center;
+        }
     </style>   
 
 </head>
