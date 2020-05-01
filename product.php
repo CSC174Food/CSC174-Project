@@ -129,6 +129,7 @@
    <?php 
         $total_quantity += $shop["item_quantity"];
         $total_price += $shop["value"];
+        $_SESSION['total']=$total_price;
     endforeach;?>
    <tr>
    <td>
