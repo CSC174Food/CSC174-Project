@@ -1,6 +1,5 @@
 <?php
     session_start();
-    $_SESSION['cart']=FALSE;
     $name = $email = $street = $state =$phone =$zip =$city = '';
     $errors =array('name'=>'', 'phone'=>'', 'street'=>'', 'city'=>'','state'=>'','zip'=>'','email'=>'');
 

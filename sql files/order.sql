@@ -6,11 +6,13 @@ create table P_ORDER
     card_number int(16),
     purchase_date timestamp,
     order_type boolean,
-	delievery_date datetime,
+	estimate_arrival datetime,
     pickup_time datetime,
     customer_id int,
     total_price decimal(10,2),
-	primary key(pid),
-      foreign key(customer_id)
-		references customer(custid)
+    constraint order_pk
+		primary key(order_id),
+	constraint customer_id  
+		foreign key(customer_id)
+			references customer(custid)
 );

@@ -110,7 +110,7 @@
     </tr>
   
     <?php foreach($cart as $shop): 
-        $item_price = $shop['item_quantity']*$shop['price'];
+      
     ?>
         <tr>
         <td>
@@ -123,19 +123,30 @@
                 <input type="hidden" name="delete_id" value= "<?php echo $shop["cart_id"]; ?>">
                 <input type="submit" name="remove" value="remove" class="btn danger z-depth-0">
             </form>
-           
-        
-            </td>
-            
+            </td>        
         </tr>
-   <?php endforeach;?>
+        
+   <?php 
+        $total_quantity += $shop["item_quantity"];
+        $total_price += $shop["value"];
+    endforeach;?>
+   <tr>
+   <td>
+    <td>
         <div class="center">
             <!-- name="submit" is sent to $_GET to check if the button has been press-->
             <ul id="nav-mobile" >
                     <!-- this is the go to cart button --> 
-                    <li><a href="order.php" class="btn ">Order</a></li>
+                    <li><a href="order.php" class="btn ">Pay</a></li>
                 </ul>
         </div>
+     </td>
+     <td >Total:</td>
+    <td align="right"><?php echo $total_quantity; ?></td>
+    <td align="right" colspan="2"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
+   </td>
+   </tr>
+       
     <?php
     }
     ?>
