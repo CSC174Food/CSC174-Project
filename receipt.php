@@ -1,9 +1,11 @@
 <?php
     session_start();
   include('config/db_con.php');
-    echo $_SESSION['pid'];
+    
+    $c_id =$_SESSION['pid'];
    // query for all customer
-   $sql = 'SELECT * FROM product';
+   $sql = "SELECT * FROM receipt
+            WHERE custid='$c_id'" ;
 
    // make query & get result
 
@@ -18,6 +20,30 @@
    //close connection
    mysqli_close($conn);
 
-   echo 'finish';
 
 ?>
+
+<!DOCTYPE html>
+<html >
+
+    <?php include('templates/header.php'); ?>
+
+   <h4 class="center grey-text">Thank you for your purchase</h4>
+   
+   <div class="container">
+
+   <div class="card z-depth-0">
+                 <div class="card-content cneter">
+                    <h6 ><?php echo htmlspecialchars($cid['name']); ?></h6>
+                    <div><?php echo htmlspecialchars($cid['email']); ?></div>
+                  </div>
+                  <div class="card-action right-align"></div>
+                </div>
+
+    </div>
+   </div>
+
+
+    <?php include('templates/footer.php'); ?>
+</html>
+

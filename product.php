@@ -78,6 +78,7 @@
                  <form action="product.php" method="POST">
                  <div class="product-image"><img src="<?php echo $pid['photo']; ?>"></div> 
                  <div><h5><?php echo ($pid['product_name']); ?></h5></div>
+                 <div><h6><?php echo "$". ($pid['price']); ?></h6></div>
                  <div class="cart-action" style ="width:10%">
                      <input type="text" class="product-quantity" name="quantity" value="1" />
                      <input type="submit" value="add" name="add-cart" class="btn" /></div>
