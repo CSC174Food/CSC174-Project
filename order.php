@@ -65,16 +65,11 @@
         $time = date("Y-m-d H:i:s", strtotime("now"));
         $new_time = date("Y-m-d H:i:s", strtotime("30 minutes"));
         
+        $insert = "CALL new_order('$c_id','$name', '$number','$expire','$radio','$total')";
         //create sql
-        if($radio === 'p'){
-            $insert ="INSERT INTO p_order (payment_name, card_number, expire_date, purchase_date, customer_id, total_price, order_type, pickup_time)
-            VALUES('$name', '$number','$expire','$time','$c_id','$total', '$radio', '$new_time')";
-        } 
-        elseif($radio==='d'){
-            $insert ="INSERT INTO p_order (payment_name, card_number, expire_date, purchase_date, customer_id, total_price, order_type, estimate_arrival)
-            VALUES('$name', '$number','$expire','$time','$c_id','$total', '$radio', '$new_time')";
-        }
+        
        
+        
 
         if(mysqli_query($conn, $insert)){
 
